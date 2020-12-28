@@ -34,10 +34,10 @@ namespace NationalCookies.Data.Services
             }
             else
             {
-                //get the cookies from the database
+                // get the cookies from the database
                 cookies = _context.Cookies.ToList();
 
-                //set cache expiration policy for "cookies" KVP.
+                // set cache expiration policy for "cookies" KVP.
                 // sliding expiration is based on last time data was "touched"
                 var policyOptions = new DistributedCacheEntryOptions();
                 policyOptions.SetAbsoluteExpiration(new System.TimeSpan(0, 0, 15));
