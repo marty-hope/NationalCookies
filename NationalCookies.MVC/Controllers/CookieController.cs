@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using NationalCookies.Data.Interfaces;
 
 namespace NationalCookies.Controllers
@@ -12,9 +13,9 @@ namespace NationalCookies.Controllers
             _cookieService = cookieService;          
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_cookieService.GetAllCookies());
+            return View(await _cookieService.GetAllCookies());
         }
     }
 }

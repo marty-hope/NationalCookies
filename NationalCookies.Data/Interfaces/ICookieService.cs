@@ -7,6 +7,6 @@ namespace NationalCookies.Data.Interfaces
 {
     public interface ICookieService
     {
-        List<Cookie> GetAllCookies();
+        Task<List<Cookie>> GetAllCookies();
     }
 }
