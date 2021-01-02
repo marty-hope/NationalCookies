@@ -11,7 +11,7 @@ namespace NationalCookies.API.Controllers
     [Route("[controller]")]
     public class CookiesController : ControllerBase
     {
-        
+
 
         private readonly ILogger<CookiesController> _logger;
         private readonly ICookieService _cookieService;
@@ -22,7 +22,7 @@ namespace NationalCookies.API.Controllers
             _cookieService = cookieService;
         }
 
-        [HttpGet]
+        [HttpGet("{sessionId}")]
         public async Task<IEnumerable<Cookie>> Get(string sessionId)
         {
             return await _cookieService.GetAllCookies(sessionId);

@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "cookies?sessionId=c8388574-16cb-4223-bb14-e53f070174df",
+      "launchUrl": "cookies/c8388574-16cb-4223-bb14-e53f070174df",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
