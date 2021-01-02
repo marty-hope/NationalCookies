@@ -21,7 +21,7 @@ export class ApiService {
     };
 
     getCookies(sessionId: string) {
-      return this.http.get<Cookies>(`${this.configService.config.apiUrl}/cookies/${sessionId}`)
+      return this.http.get<Cookies>(`${this.configService.config.apiUrl}cookies/${sessionId}`)
       .pipe(
         retry(1),
         catchError(this.processError)

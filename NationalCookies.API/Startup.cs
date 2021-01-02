@@ -51,6 +51,8 @@ namespace NationalCookies.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
