@@ -23,11 +23,11 @@ namespace NationalCookies.Data.Services
              await _cache.RemoveAsync("cookies");
         }
 
-        public async Task<List<Cookie>> GetAllCookies()
+        public async Task<List<Cookie>> GetAllCookies(string sessionId)
         {
             List<Cookie> cookies;
 
-            var cachedCookies = await _cache.GetStringAsync("cookies");
+            var cachedCookies = await _cache.GetStringAsync(sessionId);
             if (!string.IsNullOrEmpty(cachedCookies))
             {
                 cookies = JsonConvert.DeserializeObject<List<Cookie>>(cachedCookies);
@@ -40,10 +40,9 @@ namespace NationalCookies.Data.Services
                 // set cache expiration policy for "cookies" KVP.
                 // sliding expiration is based on last time data was "touched"
                 var policyOptions = new DistributedCacheEntryOptions();
-                policyOptions.SetAbsoluteExpiration(new System.TimeSpan(0, 0, 15));
-                //policyOptions.SetSlidingExpiration(new System.TimeSpan(0, 0, 30));
+                policyOptions.SetAbsoluteExpiration(new System.TimeSpan(0, 3, 0));
  
-                await _cache.SetStringAsync("cookies", JsonConvert.SerializeObject(cookies), policyOptions);
+                await _cache.SetStringAsync(sessionId, JsonConvert.SerializeObject(cookies), policyOptions);
             }
 
             return cookies;

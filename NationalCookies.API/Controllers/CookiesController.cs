@@ -23,10 +23,9 @@ namespace NationalCookies.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Cookie>> Get()
+        public async Task<IEnumerable<Cookie>> Get(string sessionId)
         {
-            return await _cookieService.GetAllCookies();
-            
+            return await _cookieService.GetAllCookies(sessionId);
         }
     }
 }
