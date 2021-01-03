@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Cookie } from 'src/app/services/api/cookie';
 
 @Component({
   selector: 'app-cookie',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cookie.component.scss']
 })
 export class CookieComponent implements OnInit {
+
+  @Input() cookie!: Cookie;
 
   constructor() { }
 

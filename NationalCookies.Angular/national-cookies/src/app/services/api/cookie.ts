@@ -4,6 +4,3 @@ export interface Cookie {
     imageUrl: string;
     price: number;
 }
-export interface Cookies{
-    cookies: Array<Cookie>;
-}

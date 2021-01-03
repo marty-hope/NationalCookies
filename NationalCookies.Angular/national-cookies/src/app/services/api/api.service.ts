@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ConfigService } from '../config/config.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Cookies } from './cookie';
+import { Cookie } from './cookie';
 import { retry, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
@@ -21,7 +21,7 @@ export class ApiService {
     };
 
     getCookies(sessionId: string) {
-      return this.http.get<Cookies>(`${this.configService.config.apiUrl}cookies/${sessionId}`)
+      return this.http.get<Cookie[]>(`${this.configService.config.apiUrl}cookies/${sessionId}`)
       .pipe(
         retry(1),
         catchError(this.processError)
