@@ -15,4 +15,10 @@ export class CookieComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+  })
+
 }

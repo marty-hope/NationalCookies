@@ -7,7 +7,7 @@
             <img src='{{this.cookie.imageUrl}}' alt="{{this.cookie.name}}" width="110" height="110" />
         </p>
         <p>
-            {{this.cookie.price}} / piece
+            {{this.formatter.format(this.cookie.price)}} / piece
         </p>
         <p><button type="submit" >Add to order</button></p>
     </div>

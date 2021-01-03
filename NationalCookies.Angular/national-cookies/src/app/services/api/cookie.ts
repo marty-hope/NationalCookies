@@ -10,9 +10,4 @@ export class Cookie {
         this.imageUrl = imageUrl;
         this.price = price;
     }
-
-    formatter = new Intl.NumberFormat('en-US', {
-        style: 'valuta',
-        minimumFractionDigits: 2
-      })
 }
