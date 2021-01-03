@@ -1,4 +1,6 @@
 <h2>Check out the awesome assortment of cookies:</h2>
-<div *ngFor="let cookie of this.cookies">
-    <app-cookie [cookie]="cookie"></app-cookie>
+<div class="row">
+    <div class="col-md-2" *ngFor="let cookie of this.cookies">
+        <app-cookie [cookie]="cookie"></app-cookie>
+    </div>
 </div>
