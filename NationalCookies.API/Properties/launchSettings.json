@@ -20,11 +20,11 @@
     "NationalCookies.API": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "cookies/c465fd9d-c6a4-4c5f-b250-3db0d33251d4",
+      "applicationUrl": "https://localhost:44304;http://localhost:40852",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:43177;http://localhost:40852"
+      }
     }
   }
 }

@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class CookiesComponent implements OnInit {
 
-   cookies: Cookies;
+   cookies: any;
 
   constructor(private apiService: ApiService) {
    }

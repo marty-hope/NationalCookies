@@ -10,7 +10,7 @@ describe('ApiService', () => {
   let service: ApiService;
   let httpMock: HttpTestingController;
   const config = {
-    apiUrl: 'https://localhost:44304'
+    apiUrl: 'https://localhost:44304/'
   };
 
   beforeEach(() => {
@@ -39,7 +39,7 @@ describe('ApiService', () => {
         expect(data.cookies.length > 0);
       }
     );
-    const req = httpMock.expectOne(`${config.apiUrl}/cookies/${sessionId}`);
+    const req = httpMock.expectOne(`${config.apiUrl}cookies/${sessionId}`);
     expect(req.request.method).toBe('GET');
   });
 
