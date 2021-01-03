@@ -8,12 +8,14 @@ import { ApiService } from './services/api/api.service';
 import { ConfigService } from './services/config/config.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieComponent } from './components/cookie/cookie.component';
+import { MainComponent } from './pages/main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CookiesComponent,
-    CookieComponent
+    CookieComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
