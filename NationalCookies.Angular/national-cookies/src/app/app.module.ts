@@ -7,11 +7,13 @@ import { CookiesComponent } from './pages/cookies/cookies.component';
 import { ApiService } from './services/api/api.service';
 import { ConfigService } from './services/config/config.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieComponent } from './components/cookie/cookie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CookiesComponent
+    CookiesComponent,
+    CookieComponent
   ],
   imports: [
     BrowserModule,
