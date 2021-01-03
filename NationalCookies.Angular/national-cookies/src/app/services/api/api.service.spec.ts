@@ -36,7 +36,7 @@ describe('ApiService', () => {
     const sessionId = uuidv4();
     service.getCookies(sessionId).subscribe(
       data => {
-        expect(data.cookies.length > 0);
+        expect(data.length > 0);
       }
     );
     const req = httpMock.expectOne(`${config.apiUrl}cookies/${sessionId}`);
