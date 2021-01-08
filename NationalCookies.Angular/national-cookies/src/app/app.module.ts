@@ -13,13 +13,15 @@ import { MainComponent } from './pages/main/main.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SessionExpiredComponent } from './pages/session-expired/session-expired.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CookiesComponent,
     CookieComponent,
-    MainComponent
+    MainComponent,
+    SessionExpiredComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cookie } from './cookie';
 import { retry, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class ApiService {
 
   constructor(
     private readonly configService : ConfigService,
-    private readonly http: HttpClient) { }
+    private readonly http: HttpClient, 
+    private readonly router: Router) { }
 
     httpHeader = {
       headers: new HttpHeaders({
@@ -42,6 +44,7 @@ export class ApiService {
        message = err.error.message;
       } else {
        message = `Error Code: ${err.status}\nMessage: ${err.message}`;
+       this.router.navigate(['/sessionExpired']);
       }
       console.log(message);
       return throwError(message);

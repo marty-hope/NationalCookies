@@ -26,7 +26,7 @@ namespace NationalCookies.Data.Services
             // set cache expiration policy for "cookies" KVP.
             // sliding expiration is based on last time data was "touched"
             var policyOptions = new DistributedCacheEntryOptions();
-            policyOptions.SetAbsoluteExpiration(new System.TimeSpan(0, 3, 0));
+            policyOptions.SetAbsoluteExpiration(new System.TimeSpan(0, 0, 30));
 
             await _cache.SetStringAsync(sessionId, JsonConvert.SerializeObject(cookies), policyOptions);
         }
