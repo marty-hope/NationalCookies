@@ -13,8 +13,7 @@ export class ApiService {
 
   constructor(
     private readonly configService : ConfigService,
-    private readonly http: HttpClient, 
-    private readonly router: Router) { }
+    private readonly http: HttpClient,) { }
 
     httpHeader = {
       headers: new HttpHeaders({
@@ -44,7 +43,6 @@ export class ApiService {
        message = err.error.message;
       } else {
        message = `Error Code: ${err.status}\nMessage: ${err.message}`;
-       this.router.navigate(['/sessionExpired']);
       }
       console.log(message);
       return throwError(message);
