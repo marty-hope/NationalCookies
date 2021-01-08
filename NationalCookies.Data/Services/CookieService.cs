@@ -18,6 +18,19 @@ namespace NationalCookies.Data.Services
             _cache = cache;
         }
 
+        public async Task AddCookiesToCache(string sessionId)
+        {
+            // get the cookies from the database
+            var cookies = _context.Cookies.ToList();
+
+            // set cache expiration policy for "cookies" KVP.
+            // sliding expiration is based on last time data was "touched"
+            var policyOptions = new DistributedCacheEntryOptions();
+            policyOptions.SetAbsoluteExpiration(new System.TimeSpan(0, 3, 0));
+
+            await _cache.SetStringAsync(sessionId, JsonConvert.SerializeObject(cookies), policyOptions);
+        }
+
         public async Task ClearCache()
         {
              await _cache.RemoveAsync("cookies");
@@ -25,27 +38,12 @@ namespace NationalCookies.Data.Services
 
         public async Task<List<Cookie>> GetAllCookies(string sessionId)
         {
-            List<Cookie> cookies;
-
             var cachedCookies = await _cache.GetStringAsync(sessionId);
             if (!string.IsNullOrEmpty(cachedCookies))
             {
-                cookies = JsonConvert.DeserializeObject<List<Cookie>>(cachedCookies);
+                return JsonConvert.DeserializeObject<List<Cookie>>(cachedCookies);
             }
-            else
-            {
-                // get the cookies from the database
-                cookies = _context.Cookies.ToList();
-
-                // set cache expiration policy for "cookies" KVP.
-                // sliding expiration is based on last time data was "touched"
-                var policyOptions = new DistributedCacheEntryOptions();
-                policyOptions.SetAbsoluteExpiration(new System.TimeSpan(0, 3, 0));
- 
-                await _cache.SetStringAsync(sessionId, JsonConvert.SerializeObject(cookies), policyOptions);
-            }
-
-            return cookies;
+            return null;
         }
     }
 }

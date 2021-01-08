@@ -28,6 +28,14 @@ export class ApiService {
       );
     }
 
+    getSessionId(){
+      return this.http.get<string>(`${this.configService.config.apiUrl}cookies/getSessionId/`)
+      .pipe(
+        retry(1),
+        catchError(this.processError)
+      );
+    }
+
     processError(err: any) {
       let message = '';
       if(err.error instanceof ErrorEvent) {

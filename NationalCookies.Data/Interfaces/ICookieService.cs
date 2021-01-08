@@ -9,5 +9,6 @@ namespace NationalCookies.Data.Interfaces
     {
         Task<List<Cookie>> GetAllCookies(string sessionId);
         Task ClearCache();
+        Task AddCookiesToCache(string sessionId);
     }
 }

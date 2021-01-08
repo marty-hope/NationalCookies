@@ -22,10 +22,32 @@ namespace NationalCookies.API.Controllers
             _cookieService = cookieService;
         }
 
+        /// <summary>
+        /// Retrieve cookies from the cache
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <returns></returns>
+        [Produces("application/json")]
         [HttpGet("{sessionId}")]
-        public async Task<IEnumerable<Cookie>> Get(string sessionId)
+        public async Task<ActionResult> Get(string sessionId)
         {
-            return await _cookieService.GetAllCookies(sessionId);
+            var cookies =  await _cookieService.GetAllCookies(sessionId);
+            if (cookies == null)
+                return BadRequest("Session has expired");
+            return Ok(cookies);
+;        }
+        /// <summary>
+        /// Retrieve a session id. Also, for testing purposes, add cookies to the cache and associate them with a session. 
+        /// </summary>
+        /// <returns></returns>
+        [Produces("application/json")]
+        [HttpGet(), Route("getSessionId")]
+        public async Task<ActionResult> GetSessionId()
+        {
+            var sessionId = System.Guid.NewGuid().ToString();
+            await _cookieService.AddCookiesToCache(sessionId);
+            return Ok(sessionId.ToString());
         }
     }
+
 }
